@@ -25,10 +25,6 @@
 * Crash when rendering comments from a custom controller block. [#5758] by [@deivid-rodriguez]
 * Switch `sass` dependency to `sassc-rails`, since `sass` is no longer supported and since it restores support for directly importing `css` files. [#5504] by [@deivid-rodriguez]
 
-### Removals
-
-* Support for ruby 2.3 has been removed. [#5751] by [@deivid-rodriguez]
-
 ## 2.0.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.0.0.rc2..v2.0.0)
 
 _No changes_.

@@ -257,6 +257,39 @@ jobs:
       - *format_coverage
       - *save_coverage
 
+  ruby23rails50:
+    docker:
+      - image: circleci/ruby:2.3.8-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
+
+    steps:
+      *test_steps
+
+  ruby23rails51:
+    docker:
+      - image: circleci/ruby:2.3.8-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
+
+    steps:
+      *test_steps
+
+  ruby23rails52:
+    docker:
+      - image: circleci/ruby:2.3.8-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: Gemfile
+
+    steps:
+      *test_steps
+
   ruby24rails50:
     docker:
       - image: circleci/ruby:2.4.6-node-browsers
@@ -378,6 +411,42 @@ jobs:
     steps:
       *test_steps
 
+  jruby91rails50:
+    docker:
+      - image: circleci/jruby:9.1.17.0-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
+      JRUBY_OPTS: -J-Xmx1024m --dev --debug
+
+    steps:
+      *test_steps
+
+  jruby91rails51:
+    docker:
+      - image: circleci/jruby:9.1.17.0-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
+      JRUBY_OPTS: -J-Xmx1024m --dev --debug
+
+    steps:
+      *test_steps
+
+  jruby91rails52:
+    docker:
+      - image: circleci/jruby:9.1.17.0-node-browsers
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: Gemfile
+      JRUBY_OPTS: -J-Xmx1024m --dev --debug
+
+    steps:
+      *test_steps
+
   jruby92rails50:
     docker:
       - image: circleci/jruby:9.2.7.0-node-browsers
@@ -462,6 +531,18 @@ workflows:
           requires:
             - setup_coverage
 
+      - ruby23rails50:
+          requires:
+            - testapp50
+
+      - ruby23rails51:
+          requires:
+            - testapp51
+
+      - ruby23rails52:
+          requires:
+            - testapp52
+
       - ruby24rails50:
           requires:
             - testapp50
@@ -506,6 +587,18 @@ workflows:
           requires:
             - testapp60
 
+      - jruby91rails50:
+          requires:
+            - testapp50
+
+      - jruby91rails51:
+          requires:
+            - testapp51
+
+      - jruby91rails52:
+          requires:
+            - testapp52
+
       - jruby92rails50:
           requires:
             - testapp50
@@ -530,6 +623,9 @@ workflows:
             - testapp51
             - testapp52
             - testapp60
+            - ruby23rails50
+            - ruby23rails51
+            - ruby23rails52
 
             - ruby24rails50
             - ruby24rails51
@@ -544,6 +640,10 @@ workflows:
             - ruby26rails51
             - ruby26rails52
             - ruby26rails60
+
+            - jruby91rails50
+            - jruby91rails51
+            - jruby91rails52
 
             - jruby92rails50
             - jruby92rails51
