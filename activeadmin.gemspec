@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require File.join(__dir__, "lib", "active_admin", "version")
 
 Gem::Specification.new do |s|
